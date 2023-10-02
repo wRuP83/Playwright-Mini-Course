@@ -1,12 +1,13 @@
 import { test, expect } from '@playwright/test';
+import LoginPage from '../pages/LoginPage';
+import UserCredentials from '../helpers/UserCredentials';
+import ApplicationURL from '../helpers/ApplicationURL';
 
-test('test', async ({ page }) => {
-  await page.goto('https://www.saucedemo.com/v1/');
-  await page.locator('[data-test="username"]').click();
-  await page.locator('[data-test="username"]').fill('standard_user');
-  await page.locator('[data-test="password"]').click();
-  await page.locator('[data-test="password"]').fill('secret_sauce');
-  await page.getByRole('button', { name: 'LOGIN' }).click();
+test('sanity test', async ({ page }) => {
+
+  const loginPage = new LoginPage(page);
+  await loginPage.loginToApplication();
+  
   await page.locator('div').filter({ hasText: /^\$29\.99ADD TO CART$/ }).getByRole('button').click();
   await page.getByRole('button', { name: 'ADD TO CART' }).nth(1).click();
   await page.locator('div').filter({ hasText: /^\$15\.99ADD TO CART$/ }).getByRole('button').click();
@@ -22,4 +23,10 @@ test('test', async ({ page }) => {
   await page.getByRole('link', { name: 'FINISH' }).click();
   await page.getByRole('button', { name: 'Open Menu' }).click();
   await page.getByRole('link', { name: 'Logout' }).click();
+});
+
+test('demo test', async ({ page }) => {
+
+  const loginPage = new LoginPage(page);
+  await loginPage.loginToApplication();
 });
