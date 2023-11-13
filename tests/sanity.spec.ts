@@ -2,12 +2,13 @@ import { test, expect } from '@playwright/test';
 import LoginPage from '../pages/LoginPage';
 import UserCredentials from '../helpers/UserCredentials';
 import ApplicationURL from '../helpers/ApplicationURL';
+import ProductsPage from '../pages/PruductsPage';
 
 test('sanity test', async ({ page }) => {
 
   const loginPage = new LoginPage(page);
   await loginPage.loginToApplication();
-  
+
   await page.locator('div').filter({ hasText: /^\$29\.99ADD TO CART$/ }).getByRole('button').click();
   await page.getByRole('button', { name: 'ADD TO CART' }).nth(1).click();
   await page.locator('div').filter({ hasText: /^\$15\.99ADD TO CART$/ }).getByRole('button').click();
@@ -29,4 +30,7 @@ test('demo test', async ({ page }) => {
 
   const loginPage = new LoginPage(page);
   await loginPage.loginToApplication();
+  const productsPage = new ProductsPage(page);
+  await productsPage.validatePageUrl(ApplicationURL.INVENTORY_PAGE_URL);
+  await productsPage.validateTitle("Products");
 });

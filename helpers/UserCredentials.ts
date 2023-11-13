@@ -1,5 +1,5 @@
 export default class UserCredentials {
-    
+
     //Possible username options
     public static readonly STANDARD_USER = 'standard_user';
     public static readonly LOCKED_OUT_USER = 'locked_out_user';
