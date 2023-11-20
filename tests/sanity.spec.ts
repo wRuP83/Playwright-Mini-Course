@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test';
 import LoginPage from '../pages/LoginPage';
-import UserCredentials from '../helpers/UserCredentials';
 import ApplicationURL from '../helpers/ApplicationURL';
 import ProductsPage from '../pages/PruductsPage';
 

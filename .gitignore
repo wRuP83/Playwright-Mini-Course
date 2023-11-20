@@ -3,3 +3,5 @@ node_modules/
 /playwright-report/
 /playwright/.cache/
 Playwright-Mini-Course.code-workspace
+.env
+tsconfig.json
