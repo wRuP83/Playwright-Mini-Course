@@ -12,7 +12,7 @@ export abstract class BasePage {
       })
    }
 
-   public async validateTitle(title: string) {
+   protected async validateTitle(title: string) {
       await this.validateElementText(this.page.locator('[class="header_secondary_container"]'), title);
   }
    
