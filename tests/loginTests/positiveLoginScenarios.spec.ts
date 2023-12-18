@@ -2,6 +2,7 @@ import { test } from "@playwright/test";
 import LoginPage from "../../pages/LoginPage";
 import ApplicationURL from "../../helpers/ApplicationURL";
 import ProductsPage from "../../pages/ProductsPage";
+import PageTitles from "../../helpers/PageTitles";
 
 test.describe("Positive Login Scenarios", () => {
     let loginPage: LoginPage;
@@ -12,7 +13,7 @@ test.describe("Positive Login Scenarios", () => {
     })
 
     test.afterEach(async () => {
-        await productsPage.validateTitle('Products');
+        await productsPage.validateTitle(PageTitles.INVENTORY_PAGE);
     })
 
     test("Login with standard_user", async () => {
