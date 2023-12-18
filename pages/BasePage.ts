@@ -6,13 +6,13 @@ export abstract class BasePage {
 
    }
 
-   protected async validatePageUrl(url: string) {
+   public async validatePageUrl(url: string) {
       await test.step(`Validating that a correct value of URL is ${url}`, async () => {
          await expect(this.page).toHaveURL(url);
       })
    }
 
-   protected async validateTitle(title: string) {
+   public async validateTitle(title: string) {
       await this.validateElementText(this.page.locator('[class="header_secondary_container"]'), title);
   }
    
